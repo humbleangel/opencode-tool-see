@@ -1,0 +1,19 @@
+{
+  "name": "see",
+  "description": "Read an existing image or PDF file and describe it using MiMo-V2.5 vision. Use when you need to see what is in a file the user points to.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Absolute path to the image or PDF file"
+      },
+      "prompt": {
+        "type": "string",
+        "description": "Optional instruction for the vision model",
+        "default": "Describe this image in detail"
+      }
+    },
+    "required": ["file"]
+  }
+}
