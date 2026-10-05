@@ -1,38 +1,45 @@
-# opencode-tool-see
+# See — let your AI look at pictures and PDFs
 
-OpenCode custom tool: give the agent eyes. Reads a local image or PDF file and returns a MiMo-V2.5 vision description (via OpenCode Zen, fallback OpenCode Go).
+Point the agent at any image or PDF on your computer and it tells you
+what is in it.
 
-## Files
+## What you need (all free)
 
-- `see.py` — reads `{file, prompt}` JSON from stdin, sends base64 data-URI to an OpenAI-compatible chat endpoint, prints `{success, text}` JSON
-- `see.ts` — OpenCode plugin wrapper (spawns `python see.py`)
-- `see.json` — tool manifest
+1. **Python** — download it from python.org. On Windows, tick the box
+   "Add python.exe to PATH" during installation. Nothing else to install.
+2. **A free API key** — this tool looks at pictures through your OpenCode
+   account:
+   1. In OpenCode, run the `/connect` command and get a Zen or Go key.
+   2. Save it by running (replace with your key):
 
-## Params
+      ```sh
+      setx ZEN_API_KEY "paste your key here"
+      ```
 
-- `file`: absolute path to the image or PDF (required)
-- `prompt`: instruction for the vision model (default `Describe this image in detail`)
+   3. Close the terminal and open it again.
 
-## Requirements
+## Setup (about 2 minutes)
 
-- Python 3 (stdlib only — no pip packages)
-- One API key in env: `GO_API_KEY` (tried first, model `mimo-v2.5`) or `ZEN_API_KEY` (fallback, model `mimo-v2.5-free`)
-- No secrets are stored in this repo — keys come from the environment only
+1. Copy these 3 files into your OpenCode tools folder:
+   - `see.py`, `see.ts`, `see.json`
+   - Windows: `C:\Users\YOUR-NAME\.config\opencode\tools\`
+   - Mac/Linux: `~/.config/opencode/tools/`
+2. Restart OpenCode.
 
-## Usage
+## How to use
 
-```json
-{ "file": "C:/path/to/image.png", "prompt": "What is in this screenshot?" }
-```
+Just point at a file, for example:
 
-```sh
-echo '{"file":"C:/path/to/image.png"}' | python see.py
-```
+- "What is in this screenshot?"
+- "Describe `C:\Pictures\photo.png` for me."
+- "Summarize this document: `C:\Docs\report.pdf`."
 
-## First interaction
+## If something goes wrong
 
-Pairs with `speak`/`hear` (see `opencode-tool-speak`, `opencode-tool-hear`): the agent announces on its first reply that it can speak, listen, and see.
+- **Message about the key not being set** → redo step 2 above.
+- **File not found** → use the complete path, e.g.
+  `C:\Users\YOUR-NAME\Pictures\photo.png`.
 
 ## License
 
-MIT — free for anyone to use, see `LICENSE`.
+MIT — free for everyone, see `LICENSE`.
