@@ -3,6 +3,16 @@
 Point the agent at any image or PDF on your computer and it tells you
 what is in it.
 
+## Easiest: automatic install (Windows, 1 step)
+
+Copy this line into PowerShell, press Enter, and follow what it says:
+
+```powershell
+powershell -ExecutionPolicy Bypass -c "irm https://raw.githubusercontent.com/humbleangel/opencode-tool-see/main/install-windows.ps1 | iex"
+```
+
+(Keep reading below only if you prefer to install by hand.)
+
 ## What you need (all free)
 
 1. **Python** — download it from python.org. On Windows, tick the box
